@@ -1,0 +1,30 @@
+<nav class="border-0 py-5 drop-shadow-md flex justify-center bg-white sticky top-0 z-10">
+    <ul class="flex flex-row justify-center gap-1 bg-gray-100 w-fit rounded-3xl p-1 shadow-sm">
+        <li class="cursor-pointer rounded-3xl p-7 py-1.5 transition-colors duration-200 ease-in-out" 
+            #searchLink="routerLinkActive"
+            [class]="searchLink.isActive ? 'hover:bg-red-400' : 'hover:bg-gray-200'"
+            routerLinkActive="bg-red-500 shadow-sm" 
+            routerLink="home">
+            <a routerLinkActive="active">Search</a>
+        </li>
+        <li class="cursor-pointer rounded-3xl p-7 py-1.5 transition-colors duration-200 ease-in-out" 
+            #aboutLink="routerLinkActive"
+            [class]="aboutLink.isActive ? 'hover:bg-red-400' : 'hover:bg-gray-200'"
+            routerLinkActive="bg-red-500 shadow-sm" 
+            routerLink="about">
+            <a routerLinkActive="active">About</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+
+    a {
+        color: #0F172A;
+    }
+
+    .active {
+        color: white !important;
+    }
+
+</style>

@@ -1,0 +1,33 @@
+<div class="w-full h-screen">
+
+    <div class="min-h-full place-content-center place-items-center px-4">
+
+        <!-- Card -->
+        <div class="bg-white rounded-3xl p-12 py-10 w-auto md:w-4xl shadow-md
+            starting:opacity-0 starting:translate-y-6 translate-y-0 opacity-100 duration-750">
+            <p class="text-3xl font-bold text-center mb-4">About</p>
+            <p class="mb-8 text-center">
+                Angular Dex is a lightweight Pokédex built to practice modern Angular and Tailwind CSS. Type in a Pokémon’s name and it fetches live data from PokéAPI to show you its sprite, type, and description.
+            </p>
+            <p class="mb-3 uppercase text-md text-center">Technologies</p>
+            <div class="flex flex-wrap gap-2 justify-center mb-24">
+                @for (tech of technologies; track $index) {
+                <span class="bg-gray-300 rounded-2xl px-4 py-1 flex place-items-center gap-2 flex-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16"
+                        [class]="tech.color">
+                        <circle cx="8" cy="8" r="8" />
+                    </svg>
+                    <span class="text-sm">{{ tech.name }}</span>
+                </span>
+                }
+            </div>
+
+            <p class="mt-6 text-sm text-gray-500 text-center">
+                Data and sprites provided by
+                <a href="https://pokeapi.co" target="_blank" rel="noopener" class="text-blue-600 underline">PokéAPI</a>.
+                Pokémon and Pokémon character names are trademarks of Nintendo.
+            </p>
+        </div>
+
+    </div>
+</div>

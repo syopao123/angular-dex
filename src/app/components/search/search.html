@@ -1,0 +1,26 @@
+<div class="text-center pt-72">
+
+    <p class="mb-5 text-5xl md:text-6xl font-bold starting:opacity-0 starting:-translate-y-4 translate-y-0 opacity-100 duration-1000">
+        <span>Angular </span>
+        <span class="text-red-600">Dex</span>
+    </p>
+
+    <p class="starting:opacity-0 opacity-100 duration-1000">Search any Pokémon by name</p>
+
+    <form (ngSubmit)="onSearch($event)"
+        class="mb-5 bg-white drop-shadow-lg mt-5 py-5 w-xs px-6 md:w-sm rounded-4xl flex
+        starting:translate-y-4 starting:opacity-0 opacity-100 translate-x-0 duration-1000">
+
+        <input [(ngModel)]="pokemonName" name="searchedPokemon" type="text"
+            class="focus:outline-0 w-full"
+            placeholder="e.g. Pikachu">
+
+        @if (isSearching()) {
+        <div>
+            <div class="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+        </div>
+        }
+
+    </form>
+
+</div>

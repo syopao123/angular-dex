@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './about.css',
   templateUrl: './about.html',
 })
-export class About {
+export class About implements OnInit {
 
   technologies = [
     {
@@ -26,5 +26,9 @@ export class About {
       color: 'text-red-900'
     }
   ];
+
+  ngOnInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
 }

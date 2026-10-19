@@ -1,8 +1,9 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Notyf } from 'notyf';
 import { Pokeapi } from '../../services/pokeapi';
-import { PokemonData } from '../../models/pokemon-data';
+import { PokemonData } from '../../models/pokemon-data.model';
+import { PokemonList, PokemonListItem} from '../../models/pokemon-list.model';
 import { firstValueFrom } from 'rxjs';
 
 const notyf = new Notyf();
@@ -13,36 +14,53 @@ const notyf = new Notyf();
   styleUrl: './search.css',
   templateUrl: './search.html',
 })
-export class Search {
-
+export class Search implements OnInit {
   private readonly pokeApi = inject(Pokeapi);
   
-  pokemonName = signal('');
+  // Pokemon list for helping with search
+  pokemonList = signal<PokemonListItem[]>([]);
+
+  // Searched name
+  searchName = signal('');
+
+  // Filtered search results
+  filteredPokemon = computed(() => {
+    let term = this.searchName().trim().toLowerCase();
+    if (!term) return [];
+    return this.pokemonList().filter(p => p.name.includes(term));
+  })
 
   pokemon = output<PokemonData>();
   isSearching = signal(false);
 
-  async onSearch(e: Event) {
-    e.preventDefault();
+  async ngOnInit() {
+    await this.loadPokemonList();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-    const query = this.pokemonName().trim();
-
-    if (!query) {
-      notyf.error('Invalid query');
-      return;
-    }
-
+  private async loadPokemonList(): Promise<void> {
     try {
-      
-      this.isSearching.set(true);
-      let data = await firstValueFrom(this.pokeApi.getPokemonData(query));
-      this.pokemon.emit(data);
+
+      let data = await firstValueFrom(this.pokeApi.getPokemonList());
+      this.pokemonList.set(data.results);
 
     } catch {
-      notyf.error(`Couldn't find "${query}". Check the spelling and try again`);
+      notyf.error('There was an error while fetching pokemon list.');
+    }
+  }
+
+  async searchPokemon(name: string, url: string) {
+    try {
+
+      this.isSearching.set(true);
+      let data = await firstValueFrom(this.pokeApi.getPokemonData(url));
+      this.pokemon.emit(data);
+      this.searchName.set('');
+
+    } catch {
+      notyf.error(`Couldn't find ${name}.`);
     } finally {
       this.isSearching.set(false);
     }
   }
-
 }

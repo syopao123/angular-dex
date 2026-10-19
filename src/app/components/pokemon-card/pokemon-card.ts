@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { PokemonData } from '../../models/pokemon-data';
+import { Component, input, OnInit } from '@angular/core';
+import { PokemonData } from '../../models/pokemon-data.model';
 
 @Component({
   imports: [],
@@ -8,7 +8,7 @@ import { PokemonData } from '../../models/pokemon-data';
   templateUrl: './pokemon-card.html',
 })
 export class PokemonCard {
-  
+
   pokemon = input<PokemonData>();
 
   getTypeBadgeColor(type: string): string {
@@ -53,5 +53,4 @@ export class PokemonCard {
         return '';
     }
   }
-  
 }

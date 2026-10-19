@@ -4,13 +4,14 @@ export interface Pokemon {
 
     name: string;
 
-    genus?: string;
-
-    flavor_text: string;
+    species: {
+        name: string,
+        url: string
+    }
 
     sprites: {
         other: {
-            home: {
+            'official-artwork': {
                 front_default: string | null
             }
         }

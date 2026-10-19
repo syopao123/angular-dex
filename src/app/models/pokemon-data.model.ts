@@ -4,10 +4,14 @@ export interface PokemonData {
 
     name: string;
 
+    species_name: string;
+
     sprite: string | null;
 
     types: string[];
 
     description: string;
+
+    genus: string
 
 }

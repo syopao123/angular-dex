@@ -98,9 +98,9 @@
                     <p class="capitalize bg-gray-200 rounded-2xl px-5 py-3 flex flex-row justify-between place-items-center">
                         <span class="font-semibold">{{ a.ability.name.replace('-',' ') }}</span>
                         @if (a.is_hidden) {
-                            <span class="font-semibold text-xs uppercase text-gray-800">standard</span>
-                        } @else {
                             <span class="font-semibold text-xs uppercase text-gray-800">hidden</span>
+                        } @else {
+                            <span class="font-semibold text-xs uppercase text-gray-800">standard</span>
                         }
                     </p>
                     }

@@ -39,4 +39,9 @@ export class PokemonInfo {
     return Math.min((stat / maxStatValue) * 100, 100);
   }
 
+  getComputedMetric(value: number | undefined): number | undefined {
+    if (!value) return undefined;
+    return value / 10;
+  }
+
 }

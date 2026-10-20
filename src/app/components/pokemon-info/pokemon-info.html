@@ -72,7 +72,7 @@
                     <div class="bg-gray-200 rounded-2xl p-3 px-6 text-sm w-full py-3">
                         <p class="mb-2 uppercase text-gray-600 text-xs font-semibold">height</p>
                         <p class="flex place-items-center gap-3">
-                            <span class="font-extrabold text-xl">{{ pokemon()?.height }}</span>
+                            <span class="font-extrabold text-xl">{{ getComputedMetric(pokemon()?.height) }}</span>
                             <span>m</span>
                         </p>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="bg-gray-200 rounded-2xl p-3 px-6 text-sm w-full py-3">
                         <p class="mb-2 uppercase text-gray-600 text-xs font-semibold">weight</p>
                         <p class="flex place-items-center gap-3">
-                            <span class="font-extrabold text-xl">{{ pokemon()?.weight }}</span>
+                            <span class="font-extrabold text-xl">{{ getComputedMetric(pokemon()?.weight) }}</span>
                             <span>kg</span>
                         </p>
                     </div>

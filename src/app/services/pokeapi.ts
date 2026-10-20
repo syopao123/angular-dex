@@ -43,7 +43,11 @@ export class Pokeapi {
                         sprite: pokemon.sprites.other['official-artwork'].front_default,
                         types: pokemon.types.map(t => t.type.name),
                         description: this.getEnglishDescription(species),
-                        genus: this.getEnglishGenus(species)
+                        genus: this.getEnglishGenus(species),
+                        stats: pokemon.stats,
+                        height: pokemon.height,
+                        weight: pokemon.weight,
+                        abilities: pokemon.abilities
                     }))
                 )
             )

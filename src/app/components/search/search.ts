@@ -30,7 +30,7 @@ export class Search implements OnInit {
     return this.pokemonList().filter(p => p.name.includes(term));
   })
 
-  pokemon = output<PokemonData>();
+  pokemon = output<PokemonData | null>();
   isSearching = signal(false);
 
   async ngOnInit() {
@@ -51,6 +51,8 @@ export class Search implements OnInit {
 
   async searchPokemon(name: string, url: string) {
     try {
+
+      this.pokemon.emit(null);
 
       this.isSearching.set(true);
       let data = await firstValueFrom(this.pokeApi.getPokemonData(url));

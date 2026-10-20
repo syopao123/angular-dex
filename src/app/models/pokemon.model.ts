@@ -4,6 +4,14 @@ export interface Pokemon {
 
     name: string;
 
+    height: number;
+    
+    weight: number;
+
+    abilities: PokemonAbility[];
+
+    stats: BaseStat[];
+
     species: {
         name: string,
         url: string
@@ -21,5 +29,23 @@ export interface Pokemon {
         slot: number;
         type: { name: string }
     }[];
+
+}
+
+export interface PokemonAbility {
+    is_hidden: boolean,
+    slot: number,
+    ability: {
+        name: string
+    }
+}
+
+export interface BaseStat {
+
+    base_stat: number;
+
+    stat: {
+        name: string,
+    }
 
 }

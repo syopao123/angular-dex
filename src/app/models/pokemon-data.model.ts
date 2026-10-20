@@ -1,3 +1,5 @@
+import { BaseStat, PokemonAbility } from "./pokemon.model";
+
 export interface PokemonData {
     
     id: number;
@@ -12,6 +14,14 @@ export interface PokemonData {
 
     description: string;
 
-    genus: string
+    genus: string;
+
+    stats: BaseStat[];
+
+    height: number;
+    
+    weight: number;
+
+    abilities: PokemonAbility[];
 
 }

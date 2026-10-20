@@ -1,0 +1,40 @@
+<div class="bg-white p-8 rounded-2xl shadow-sm
+                starting:-translate-x-4 translate-x-0 starting:opacity-0 opacity-100 duration-500">
+
+    @if (pokemon()?.name !== pokemon()?.species_name) {
+    <div class="text-center mb-8">
+        <span class="capitalize text-md text-gray-500 py-1 px-3 rounded-xl">
+            {{ pokemon()?.name.replace('-', ' ') }}
+        </span>
+    </div>
+    }
+
+    <img class="rounded-2xl mb-5 w-sm" [src]="pokemon()?.sprite" [alt]="pokemon()?.name">
+
+    <div class="flex place-items-center justify-between mb-2">
+        <p class="capitalize font-bold text-3xl">{{ pokemon()?.species_name }}</p>
+        <p class="font-semibold text-gray-400">#{{ pokemon()?.id }}</p>
+    </div>
+
+    <div class="mb-5">
+        <p class="capitalize text-gray-500 text-sm">The {{ pokemon()?.genus }}</p>
+    </div>
+
+    <div class="flex justify-between place-items-start">
+
+        <!-- Types -->
+        <div class="flex flex-wrap gap-1">
+            @for (type of pokemon()?.types; track $index) {
+            <span [class]="getTypeBadgeColor(type)" class="px-3 py-1 capitalize rounded-2xl text-sm">{{ type }}</span>
+            }
+        </div>
+
+        <!-- Generation -->
+        <div>
+            <span class="font-semibold text-gray-500 text-xs bg-gray-300 px-3 py-1 rounded-xl uppercase">
+                {{ pokemon()?.generation.replace('-', ' ') }}
+            </span>
+        </div>
+    </div>
+
+</div>

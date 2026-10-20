@@ -47,7 +47,8 @@ export class Pokeapi {
                         stats: pokemon.stats,
                         height: pokemon.height,
                         weight: pokemon.weight,
-                        abilities: pokemon.abilities
+                        abilities: pokemon.abilities,
+                        generation: species.generation.name
                     }))
                 )
             )

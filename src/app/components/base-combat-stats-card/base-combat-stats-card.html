@@ -1,0 +1,22 @@
+<div class="bg-white rounded-2xl h-fit shadow-sm p-8 mb-5
+                    starting:translate-x-5 translate-x-0 starting:opacity-0 opacity-100 duration-500">
+    <div class="flex justify-between">
+        <p class="font-bold text-xs text-red-900 uppercase mb-6">base combat stats</p>
+        <p class="uppercase text-xs text-gray-500 font-semibold">max tier: 255</p>
+    </div>
+    @for (s of pokemon()?.stats; track $index) {
+
+    <div class="flex items-center gap-0 text-red-900 font-semibold uppercase" 
+        [class]="$index !== pokemon()!.stats.length - 1 ? 'mb-3' : ''">
+
+        <span class="w-10 md:w-30 px-2 py-0.5 flex-none">{{ getShortenStatName(s.stat.name) }}</span>
+
+        <span class="w-16 px-2 py-0.5 text-black text-end flex-none">{{ s.base_stat }}</span>
+
+        <div class="h-3 flex-1 bg-gray-200 rounded-full ml-4">
+            <div class="h-full bg-red-600 rounded-full" [style.width.%]="getComputedStat(s.base_stat)"></div>
+        </div>
+
+    </div>
+    }
+</div>

@@ -1,10 +1,14 @@
 export interface PokemonSpecies {
 
-    id: number,
+    id: number;
 
-    name: string,
+    name: string;
 
-    genera: PokemonGenera[],
+    generation: {
+        name: string;
+    };
+
+    genera: PokemonGenera[];
 
     flavor_text_entries: {
 
@@ -12,7 +16,7 @@ export interface PokemonSpecies {
 
         language: { name: string }
 
-    }[]
+    }[];
 }
 
 export interface PokemonGenera {

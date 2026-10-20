@@ -15,8 +15,8 @@
             {{ pokemon()?.species_name }}
         </p>
         @if (pokemon()?.name !== pokemon()?.species_name) {
-        <p class="font-extralight text-gray-600 mb-4">
-            {{ pokemon()?.name }}
+        <p class="font-extralight text-gray-600 mb-4 capitalize">
+            {{ pokemon()?.name.replace('-', ' ') }}
         </p>
         }
     </div>

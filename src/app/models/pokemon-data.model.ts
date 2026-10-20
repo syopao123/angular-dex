@@ -24,4 +24,6 @@ export interface PokemonData {
 
     abilities: PokemonAbility[];
 
+    generation: string;
+
 }

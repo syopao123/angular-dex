@@ -1,15 +1,13 @@
 <div class="text-center pt-48 place-items-center">
 
-    <p class="mb-5 text-5xl md:text-6xl font-bold starting:opacity-0 starting:-translate-y-4 translate-y-0 opacity-100 duration-1000">
+    <p class="mb-5 text-5xl md:text-6xl font-bold">
         <span>Angular </span>
         <span class="text-red-600">Dex</span>
     </p>
 
-    <p class="starting:opacity-0 opacity-100 duration-1000">Search any Pokémon by name</p>
+    <p>Search any Pokémon by name</p>
 
-    <form
-        class="bg-white shadow-md mb-5 mt-5 py-5 w-xs px-6 md:w-sm rounded-4xl flex
-        starting:translate-y-4 starting:opacity-0 opacity-100 translate-x-0 duration-1000">
+    <form class="bg-white shadow-sm mb-5 mt-5 py-5 w-xs px-6 md:w-sm rounded-4xl flex">
 
         <input [(ngModel)]="searchName" name="searchedPokemon" type="text" autocomplete="off"
             class="focus:outline-0 w-full"
@@ -17,14 +15,15 @@
 
         @if (isSearching()) {
         <div>
-            <div class="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+            <div class="h-6 w-6 animate-spin rounded-full border-3 border-blue-500 border-t-transparent"></div>
         </div>
         }
 
     </form>
 
     @if (filteredPokemon().length > 0) {
-    <ul class="bg-white rounded-lg w-72 max-h-80 flex flex-col gap-3 px-3 py-4 overflow-auto">
+    <ul class="bg-white rounded-lg w-72 flex flex-col gap-3 px-3 py-4 overflow-auto
+            starting:max-h-0 max-h-80 starting:opacity-0 opacity-100 duration-500">
         @for (pokemon of filteredPokemon(); track pokemon.name) {
             <span (click)="searchPokemon(pokemon.name, pokemon.url)" class="capitalize hover:bg-gray-200 py-2 cursor-pointer">
                 {{ pokemon.name }}

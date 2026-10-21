@@ -3,7 +3,7 @@
     <p class="uppercase text-xs font-semibold text-red-900 mb-3">abilities</p>
     <div class="flex flex-col gap-3">
         @for (a of pokemon()?.abilities; track $index) {
-        <p class="capitalize bg-gray-100 rounded-2xl px-5 py-3 flex flex-row justify-between place-items-center">
+        <p class="capitalize bg-gray-100 rounded-2xl px-5 py-3 flex flex-row justify-between place-items-center gap-12 w-auto">
             <span class="font-semibold">{{ a.ability.name.replace('-',' ') }}</span>
             @if (a.is_hidden) {
             <span class="font-semibold text-xs uppercase text-gray-800">hidden</span>

@@ -22,9 +22,9 @@ export class Pokeapi {
         return response;
     }
 
-    getPokemon(url: string): Observable<Pokemon> {
-        let response = this.http.get<Pokemon>(url);
-        return response;
+    getPokemon(url: string | undefined, name: string | undefined): Observable<Pokemon> {
+        // let response = this.http.get<Pokemon>(url);
+        return url ? this.http.get<Pokemon>(url) : this.http.get<Pokemon>(this.baseUrl + `/pokemon/${name}`);
     }
 
     getSpecies(pokemon: Pokemon): Observable<PokemonSpecies> {
@@ -32,8 +32,8 @@ export class Pokeapi {
         return response;
     }
 
-    getPokemonData(url: string): Observable<PokemonData> {
-        return this.getPokemon(url).pipe(
+    getPokemonData(url: string | undefined, name: string | undefined): Observable<PokemonData> {
+        return this.getPokemon(url, name).pipe(
             switchMap((pokemon) => 
                 this.getSpecies(pokemon).pipe(
                     map((species) => ({

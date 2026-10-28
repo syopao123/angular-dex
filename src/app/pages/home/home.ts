@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { Search } from '../../components/search/search';
-import { PokemonCard } from '../../components/pokemon-card/pokemon-card';
+import { Search } from '../../components/search-bar/search';
+import { PokemonCard } from '../../components/search-pokemon-card/pokemon-card';
 import { PokemonData } from '../../models/pokemon-data.model';
-import { PokemonInfo } from '../../components/pokemon-info/pokemon-info';
 
 @Component({
-  imports: [Search, PokemonCard, PokemonInfo],
+  imports: [Search, PokemonCard],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html',

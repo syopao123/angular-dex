@@ -1,5 +1,8 @@
 import { Component, input } from '@angular/core';
 import { PokemonData } from '../../models/pokemon-data.model';
+import { Notyf } from 'notyf';
+
+const notyf = new Notyf();
 
 @Component({
   imports: [],
@@ -10,7 +13,51 @@ import { PokemonData } from '../../models/pokemon-data.model';
 export class PokemonImageCard {
 
   pokemon = input<PokemonData | null>();
-  
+
+  favoritePokemon() {
+    let storage = localStorage.getItem('favorites');
+
+    if (storage) {
+      let favorites: string[] = JSON.parse(storage);
+
+      const pokemonName: string | undefined = this.pokemon()?.name;
+
+      // Check if pokemon is in favorites
+      if (this.isFavorite()) {
+        // Remove if yes
+        favorites = favorites.filter(name => name !== this.pokemon()?.name);
+      } else {
+        // Favorite if no
+        if (pokemonName) {
+          favorites.push(pokemonName);
+        }
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      notyf.success('Saved');
+    }
+  }
+
+  isFavorite(): Boolean {
+
+    const pokemonName = this.pokemon()?.name;
+
+    let storage = localStorage.getItem('favorites');
+
+    if (!storage) {
+      notyf.error('Failed to add pokemon to favorites');
+      return false;
+    }
+
+    if (!pokemonName) {
+      notyf.error('Pokemon name not found');
+      return false;
+    }
+
+    let favorites: string[] = JSON.parse(storage);
+    return favorites.includes(pokemonName);
+  }
+
   getTypeBadgeColor(type: string): string {
     switch (type) {
       case 'bug':

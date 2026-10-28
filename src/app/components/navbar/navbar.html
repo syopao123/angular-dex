@@ -4,8 +4,15 @@
             #searchLink="routerLinkActive"
             [class]="searchLink.isActive ? 'hover:bg-red-400' : 'hover:bg-gray-200'"
             routerLinkActive="bg-red-500 shadow-sm" 
-            routerLink="home">
+            routerLink="search">
             <a routerLinkActive="active">Search</a>
+        </li>
+        <li class="cursor-pointer rounded-3xl p-7 py-1.5 transition-colors duration-200 ease-in-out" 
+            #favoritesLink="routerLinkActive"
+            [class]="favoritesLink.isActive ? 'hover:bg-red-400' : 'hover:bg-gray-200'"
+            routerLinkActive="bg-red-500 shadow-sm" 
+            routerLink="favorites">
+            <a routerLinkActive="active">Favorites</a>
         </li>
         <li class="cursor-pointer rounded-3xl p-7 py-1.5 transition-colors duration-200 ease-in-out" 
             #aboutLink="routerLinkActive"

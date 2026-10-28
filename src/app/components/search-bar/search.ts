@@ -55,7 +55,7 @@ export class Search implements OnInit {
       this.pokemon.emit(null);
 
       this.isSearching.set(true);
-      let data = await firstValueFrom(this.pokeApi.getPokemonData(url));
+      let data = await firstValueFrom(this.pokeApi.getPokemonData(url, undefined));
       this.pokemon.emit(data);
       this.searchName.set('');
 

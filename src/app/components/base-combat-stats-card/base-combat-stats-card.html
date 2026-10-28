@@ -6,7 +6,7 @@
     </div>
     @for (s of pokemon()?.stats; track $index) {
 
-    <div class="flex items-center gap-0 text-red-900 font-semibold uppercase" 
+    <div class="flex items-center gap-0 text-red-900 font-semibold uppercase"
         [class]="$index !== pokemon()!.stats.length - 1 ? 'mb-3' : ''">
 
         <span class="w-10 md:w-30 px-2 py-0.5 flex-none">{{ getShortenStatName(s.stat.name) }}</span>
@@ -14,7 +14,10 @@
         <span class="w-16 px-2 py-0.5 text-black text-end flex-none">{{ s.base_stat }}</span>
 
         <div class="h-3 flex-1 bg-gray-200 rounded-full ml-4">
-            <div class="h-full bg-red-600 rounded-full" [style.width.%]="getComputedStat(s.base_stat)"></div>
+            <div
+                class="h-full bg-red-600 rounded-full w-(--bar-width) starting:w-0 transition-[width] duration-700 ease-out"
+                [style.--bar-width]="getComputedStat(s.base_stat) + '%'">
+            </div>
         </div>
 
     </div>

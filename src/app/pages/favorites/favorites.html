@@ -1,0 +1,11 @@
+<div class="min-h-screen p-12">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+        @for (pokemon of favoritePokemon(); track $index) {
+            <app-favorite-pokemon-card [pokemon]="pokemon" />
+        }
+
+    </div>
+
+</div>

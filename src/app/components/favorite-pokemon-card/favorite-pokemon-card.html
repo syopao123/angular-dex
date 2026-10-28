@@ -1,0 +1,12 @@
+<div [routerLink]="['/pokemon', pokemon()?.name, '/favorites']" 
+    class="bg-white p-12 pb-6 rounded-3xl shadow-sm border border-gray-100 h-full cursor-pointer
+    hover:scale-101 hover:bg-gray-50 duration-500">
+    
+    <img class="mb-5" [src]="pokemon()?.sprite" [alt]="pokemon()?.name">
+
+    <p class="capitalize text-center font-semibold text-lg">{{ pokemon()?.species_name }}</p>
+    @if (pokemon()?.name !== pokemon()?.species_name) {
+        <p class="text-center text-sm capitalize font-light text-gray-500">{{ pokemon()?.name.replace('-', ' ') }}</p>
+    }
+
+</div>
